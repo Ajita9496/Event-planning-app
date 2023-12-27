@@ -1,0 +1,49 @@
+
+.eventListContainer{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 30px;
+}
+.eventListHeader{
+    display: flex;
+    width: 100%;
+    flex-direction:row ;
+    justify-content: space-between;
+    align-items: center;
+
+}
+#eventsList {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+    margin-top: 1rem;
+  }
+  
+  h1 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #025f29;
+  }
+  
+  button {
+    padding: 10px 15px;
+    font-size: 16px;
+    cursor: pointer;
+  }
+  
+  .createEventButton {
+    background-color: #4caf50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+  }
+  
+  .createEventButton:hover {
+    background-color: #45a049;
+  }
+  
+ 
