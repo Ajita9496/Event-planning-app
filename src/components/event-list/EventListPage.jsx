@@ -33,7 +33,6 @@ const EventListPage = () => {
   const handleCloseEventForm = () => {
     setShowEventForm(false);
     loadEvents();
-    console.log("close event");
   };
 
 const filteritem = (searchTerm) => {
@@ -52,7 +51,7 @@ const filteritem = (searchTerm) => {
           <input
           type="text"
           value={searchTerm}
-          placeholder='Event NAme'
+          placeholder='Event Name'
           onChange={handleSearchChange}
            />
           

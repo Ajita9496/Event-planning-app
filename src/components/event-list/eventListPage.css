@@ -13,6 +13,18 @@
     justify-content: space-between;
     align-items: center;
 }
+.searchContainer{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: .75rem
+}
+.searchContainer input{
+  height: 1.5rem;
+  border-style: none;
+  border: 1px solid #2e302f;
+  border-radius: 5px;
+}
 #eventsList {
     display: flex;
     justify-content: flex-start;

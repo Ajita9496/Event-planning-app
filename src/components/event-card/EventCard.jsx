@@ -8,7 +8,7 @@ const EventCard = ({ event, showViewGuestsButton, loadEvents }) => {
 const navigate = useNavigate();
   const [showGuestForm, setShowGuestForm] = useState(false);
   const [showEventForm, setShowEventForm] = useState(false)
-console.log(event);
+
   const handleGuestForm = () => {
     setShowGuestForm(true);
   };
