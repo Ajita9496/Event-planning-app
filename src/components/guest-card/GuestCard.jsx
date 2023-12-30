@@ -1,21 +1,21 @@
 
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import GuestForm from '../guest-form/GuestForm';
 import "./guestCard.css"
 
-const GuestCard = ({ guest, eventId }) => {
+const GuestCard = ({ guest, eventId, loadEvent }) => {
   const [showGuestForm, setShowGuestForm] = useState(false);
 
   const handleGuestForm = () => {
     setShowGuestForm(true);
   };
-
   const handleCloseGuestForm = () => {
     setShowGuestForm(false);
+    loadEvent();
   };
 
   return (
-    <div key={guest.id} className="guestCard">
+    <div className="guestCard">
       <div className='guestDetails'>
       <h3>{guest.name}</h3>
       <p>Email: {guest.email}</p>

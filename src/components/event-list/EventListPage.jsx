@@ -6,7 +6,7 @@ import "./eventListPage.css"
 const EventListPage = () => {
   const [events, setEvents] = useState([]);
   const [showEventForm, setShowEventForm] = useState(false);
-  const [selectedEvent, setSelectedEvent] = useState(null);
+  const [searchTerm, setSearchTerm] = useState("");
 
   useEffect(() => {
     loadEvents(); 
@@ -16,38 +16,66 @@ const EventListPage = () => {
     const eventData = JSON.parse(localStorage.getItem('events')) || [];
     setEvents(eventData);
   };
-
-  const handleShowEventForm = (event) => {
-    setSelectedEvent(event);
+  const handleSearchChange = (e) => {
+    const term = e.target.value;
+    setSearchTerm(term);
+    if (term.trim() === "") {
+      loadEvents();
+    } else {
+      filteritem(term);
+    }
+  };
+  
+  const handleShowEventForm = () => {
     setShowEventForm(true);
   };
 
   const handleCloseEventForm = () => {
-    setSelectedEvent(null);
     setShowEventForm(false);
     loadEvents();
+    console.log("close event");
   };
+
+const filteritem = (searchTerm) => {
+  const eventArray = events.filter((event) =>
+    event.name.toLowerCase().includes(searchTerm.toLowerCase())
+  );
+  setEvents(eventArray);
+};
 
   return (
     <div className='eventListContainer'>
       <div className='eventListHeader'>
         <h1>EVENTS LIST</h1>
-        <button className="createEventButton" onClick={() => handleShowEventForm(null)}>Create Event</button>
+        <div className='searchContainer'>
+          <label htmlFor='search'>Search Events</label>
+          <input
+          type="text"
+          value={searchTerm}
+          placeholder='Event NAme'
+          onChange={handleSearchChange}
+           />
+          
+        </div>
+        <button className="createEventButton" onClick={() => handleShowEventForm()}>Create Event</button>
       </div>
       
       {showEventForm && (
         <EventForm
           onClose={handleCloseEventForm}
-          initialEvent={selectedEvent || {}}
+          initialEvent={{}}
+        
         />
       )}
 
       <div id="eventsList">
         {events.map((event) => (
+          
           <EventCard
             key={event.id}
             event={event}
             showViewGuestsButton={true}
+            loadEvents = {loadEvents}
           />
         ))}
       </div>
